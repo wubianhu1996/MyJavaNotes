@@ -10,7 +10,7 @@ import java.lang.reflect.Constructor;
 public class DemoClassContructor {
 
     public static void main(String[] args) {
-
+// 获取“参数是parameterTypes”的，并且是类自身声明的构造函数，包含public、protected和private方法。
         // getDeclaredConstructor() 的测试函数
         testGetDeclaredConstructor() ;
 
