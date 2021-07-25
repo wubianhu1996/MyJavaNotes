@@ -316,9 +316,19 @@ java提供四种访问控制修饰符号，用于控制方法和属性（成员�
 
 
 
-#### 构造函数
+#### 获取构造函数
 
-1.通过反射只能获取public权限的构造器
+1.getConstructor()只能获取public权限的构造器
+
+2.getDeclaredConstructor()可以获取类中任意的构造函数，包括public，priviate，protected方法
+
+3.getEnclosingConstructor()，官方说法是“如果该 Class 对象表示构造方法中的一个本地或匿名类，则返回 Constructor 对象，它表示底层类的立即封闭构造方法。否则返回 null。” 通俗点来说，就是“如果一个类A的构造函数中定义了一个内部类InnerA，则通过InnerA的Class对象调用getEnclosingConstructor()方法，可以获取类A的这个构造函数”。
+
+#### 获取成员方法
+
+#### 获取成员变量
+
+
 
 ### 注解（Annotation)
 
