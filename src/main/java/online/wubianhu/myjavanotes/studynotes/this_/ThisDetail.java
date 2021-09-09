@@ -1,4 +1,4 @@
-package online.wubianhu.myjavanotes.studynotes.thisDetail;
+package online.wubianhu.myjavanotes.studynotes.this_;
 
 public class ThisDetail {
     public static void main(String[] args) {
