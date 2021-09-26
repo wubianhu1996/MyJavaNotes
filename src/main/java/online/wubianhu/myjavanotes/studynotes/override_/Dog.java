@@ -5,4 +5,8 @@ public class Dog extends Animal {
     public void cry() {
         System.out.println("狗子叫");
     }
+
+//    private void eat() {
+//
+//    }
 }
