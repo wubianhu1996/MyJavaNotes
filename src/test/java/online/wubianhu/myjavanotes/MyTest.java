@@ -14,6 +14,7 @@ public class MyTest {
         jack.manager();
         System.out.println(jack.getName() + "的年薪是" + jack.getAnnual());
 
+
     }
 
 
