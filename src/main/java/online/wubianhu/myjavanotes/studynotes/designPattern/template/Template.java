@@ -8,6 +8,26 @@ package online.wubianhu.myjavanotes.studynotes.designPattern.template;
 
 //1。abstractTemplete(抽象模板）：定义一系列抽象方法，或者实现的方法，或者钩子方法。即：定义流程
 //2。ConcreteTemplete(具体模板）：实现父类抽象方法，基于本身不同的模板业务逻辑，实现不同的业务逻辑代码。即：抽象方法实现相同，内部逻辑实现不同
-public class Template {
+
+//举例
+//client请求商品详情，有模块组装器选择组装返回结果。
+//client请求-》模块组装器-》1。2。3。4等等模块-》返回请求
+public abstract class Template<T> {
+    //组装结果
+    public T template(ModelContaner modelContaner) {
+        T block = initBlock();
+        try {
+            this.dowork(modelContaner, block);
+        } catch (Exception e) {
+
+        }
+        return block;
+    }
+
+    //初始化构建返回结果模型
+    protected abstract T initBlock();
+
+
+    protected abstract void dowork(ModelContaner modelContaner,T block);
 
 }
