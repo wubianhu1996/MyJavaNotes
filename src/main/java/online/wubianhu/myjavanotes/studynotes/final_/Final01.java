@@ -1,4 +1,4 @@
-package online.wubianhu.myjavanotes.studynotes.keywords;
+package online.wubianhu.myjavanotes.studynotes.final_;
 
 
 //final修饰的属性在定义时，必须赋初值，并且以后不能再修改，赋值可以在如下位置之一：
