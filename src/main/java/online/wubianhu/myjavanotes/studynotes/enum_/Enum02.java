@@ -9,6 +9,7 @@ public class Enum02 {
         System.out.println(FourSeason.WINTER);
     }
 }
+@SuppressWarnings("all")
 enum FourSeason{
 
 

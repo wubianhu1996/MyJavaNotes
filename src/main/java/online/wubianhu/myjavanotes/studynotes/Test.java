@@ -8,7 +8,15 @@ public class Test {
         String name = person.getname();
         System.out.println(name);
 
+        String a = "adc";
+        String b = "def";
+        String c = a+b;
+        String d = "abcdef";
+        System.out.println(c == d);
+        String intern = d.intern();
+        System.out.println(intern);
     }
+
 }
 
 class Person{
