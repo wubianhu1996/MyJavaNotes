@@ -1154,6 +1154,98 @@ public HashSet(){
 
 5）不能有重复元素/对象。在前面Set接口使用已经讲过
 
+##### HashSet底层机制说明
+
+1.HashSet底层是HashMap
+
+2.添加一个元素时，先得到hash值--会转成索引值
+
+3.找到存储数据表table，看到这个索引位置是否已经存放的有元素
+
+4.如果没有，直接加入
+
+5.如果有，调用equals比较，如果相同，就放弃添加，如果不相同，就添加到最后
+
+6.在java中，如果一条链表的元素个数超过TREEIFY_THRESHOLD(默认是8)，并且table的大小>=MIN_TREEIFY_CAPACITY(默认是64)，就会进行树化（红黑树）
+
+##### LinkedHashSet的全面说明
+
+1）LinkedHashSet是HashSet的子类
+
+2）LinkedHashSet底层是一个LinkedHashMap，底层维护了一个数组 + 双向链表
+
+3）LinkedHashSet根据元素的hashCode值来决定元素的储存位置，同事使用链表维护元素的次序（图），这使得元素看起来是插入顺序保存的。
+
+4）LinkedHashSet不允许重复元素
+
+#### Map接口和常用方法
+
+Map接口实现类的特点
+
+注意：这里讲的是JDK8的Map接口特点
+
+1）Map的与Collection并列存在。用于保存具有映射关系的数据：Key-Value
+
+2）Map中的Key和value可以是任何引用类型的数据，会封装到HashMap$Node对象中
+
+3）Map中的key不允许重复，原因和HashSet一样
+
+4）Map中的value可以重复
+
+5）Map的key可以为null，value也可以为null，注意key为null，只能有一个，value为null，可以为多个
+
+6）常用String类作为Map的key
+
+7）key和value之间存在单向一对一关系，即通过指定的key总能找到对应的value
+
+8）Map存放数据的key-value示意图，一对k-v是放HashMap在一个Node中的，又因为Node实现了Entry接口，有些书上也说 一对k-v就是一个Entry
+
+##### 一些APi
+
+1）containsKey：查找键是否存在
+
+2）keySet：获取所有的键
+
+3）entrySet：获取所有关系
+
+4）values：获取所有的值
+
+
+
+#### HashMap小结
+
+1）Map接口的常用实现类：HashMap，HashTable，Properties
+
+2）HashMap是Map接口使用频率最高的实现类
+
+3）HashMap是以key-val对的放肆好来存储数据（案列entry）
+
+4）key不能重复，但是是值可以重复，允许使用null键和null值
+
+5）如果添加相同的key，则会覆盖原来的key-val，等同于修改（key不会替换，val会替换）
+
+6）与HashSet一样，不能保证映射的顺序，因为底层是以hash表的方式来存储的
+
+7）HashMap没有实现同步，因此是线程不安全的
+
+
+
+#### HashMap底层机制及源码剖析
+
+扩容机制，与HashSet相同
+
+1.HashMap底层维护了Node类型的数组table，默认为null
+
+2.当创建对象，将加载因子（loadfactor）初始化为0.75
+
+3.当添加key-val时，通过key的哈希值得到在table的索引。然后判断该索引处是否有元素，如果没有元素直接添加。如果该索引处有元素，继续判断该元素的key和准备加入的key是否相等，如果相等，则直接替换val；如果不想等需要判断是树结构还是链表结构，作出相应处理。如果添加时发现容量不够，则需要扩容。
+
+4.第一次添加，则需要扩容table容量为16，临界值（threshold）为12（16*0.75）
+
+5.以后再扩容，则需要扩容table容量为原来的2倍（32），临界值为原来的2倍，即24，依次类推。
+
+6.在java8中，如果一条链表的元素个数超过TREEIFY_THRESHOLD（默认是8），并且table的大小>+ MIN_TREEIFY_CAPACITY（默认64），就会进行树化（红黑树）
+
 ### 泛型
 
 ### 流
